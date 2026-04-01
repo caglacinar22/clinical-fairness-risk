@@ -5,19 +5,26 @@ prediction with explicit fairness auditing and adversarial
 debiasing across demographic subgroups.
 
 ## Motivation
-Clinical ML models trained on historical data often encode 
-systemic biases — underperforming for women, elderly patients, 
-or minority groups not well represented in training data. 
+Clinical ML models trained on historical data often encode systemic biases — underperforming for women
+elderly patients,or minority groups not well represented in training data. 
 This project explicitly measures and corrects for those disparities.
 
 ## Approach
-1. **Baseline model** — multimodal fusion of vitals (LSTM) and clinical notes (BERT)
-2. **Fairness audit** — measure equalized odds, calibration parity, demographic parity across subgroups
-3. **Adversarial debiasing** — penalize model for encoding protected attributes
-4. **Tradeoff analysis** — fairness vs accuracy frontier
+1. **EDA** — explore data, visualize subgroup distributions
+2. **Preprocessing** — clean, scale, split, preserve subgroup labels
+3. **Baseline Model** — logistic regression, measure subgroup performance
+4. **Fairness Audit** — demographic parity, equalized odds across sex and age
+5. **Adversarial Debiasing** — ExponentiatedGradient with equalized odds constraint
+
+## Key Results
+| Metric | Baseline | Fair Model |
+|--------|----------|------------|
+| ROC-AUC | see results/ | see results/ |
+| Demographic Parity Diff | see results/ | see results/ |
+| Equalized Odds Diff | see results/ | see results/ |
 
 ## Dataset
-MIMIC-III (PhysioNet) — pending credentialed access
+MIMIC-III (PhysioNet) — currently using Heart Failure Clinical Records (UCI) as proxy
 
 ## Tech Stack
 - PyTorch
@@ -26,8 +33,25 @@ MIMIC-III (PhysioNet) — pending credentialed access
 - SHAP
 - scikit-learn
 
-## Project Status
- In progress
+## Project Structure
+```
+├── data/
+│   ├── raw/               # original data
+│   └── processed/         # cleaned, split data
+├── notebooks/
+│   ├── 01_eda.ipynb
+│   ├── 02_preprocessing.ipynb
+│   ├── 03_baseline_model.ipynb
+│   ├── 04_fairness_audit.ipynb
+│   └── 05_debiasing.ipynb
+├── src/
+│   ├── data_loader.py
+│   ├── model.py
+│   ├── fairness.py
+│   └── train.py
+└── results/
+    └── figures/
+```
 
 ## Author
 Cagla CINAR — BSc Computer Engineering, Politecnico di Torino
