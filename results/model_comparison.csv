@@ -1,0 +1,4 @@
+Metric,Baseline Model,Fair Model
+ROC-AUC,0.86,0.765
+Demographic Parity Diff,0.044,0.068
+Equalized Odds Diff,0.014,0.049
