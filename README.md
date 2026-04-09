@@ -17,11 +17,11 @@ This project explicitly measures and corrects for those disparities.
 5. **Adversarial Debiasing** — ExponentiatedGradient with equalized odds constraint
 
 ## Key Results
-| Metric | Baseline | Fair Model |
-|--------|----------|------------|
-| ROC-AUC | see results/ | see results/ |
-| Demographic Parity Diff | see results/ | see results/ |
-| Equalized Odds Diff | see results/ | see results/ |
+| Metric | Baseline Model | Fair Model |
+|--------|---------------|------------|
+| ROC-AUC | 0.860 | 0.765 |
+| Demographic Parity Difference | 0.044 | 0.068 |
+| Equalized Odds Difference | 0.014 | 0.049 |
 
 ## Dataset
 MIMIC-III (PhysioNet) — currently using Heart Failure Clinical Records (UCI) as proxy
